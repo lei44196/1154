@@ -1,6 +1,8 @@
-# 零到全栈 · 模块 4.5 / 4.6
+# 零到全栈 · Next.js 前端与 FastAPI 后端
 
 项目已迁移到 Next.js 15，使用文件夹路由、页面预渲染和静态导出，通过 Nginx 发布。自定义文案、原有布局、动画和输入计数均保留。
+
+模块 5.4 的后端位于 `backend/`，实现 `GET /api/profile`、`POST /api/analyze` 和自动文档。安装、运行和验证方法见 [backend/README.md](backend/README.md)。
 
 ## 本地开发
 
