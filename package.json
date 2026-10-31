@@ -1,0 +1,31 @@
+{
+  "name": "quanzhan",
+  "version": "1.0.0",
+  "description": "零到全栈模块 4.4：React 组件、集中管理文案、输入状态和 URL 路由。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lei44196/------.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lei44196/------/issues"
+  },
+  "homepage": "https://github.com/lei44196/------#readme",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.5"
+  },
+  "dependencies": {
+    "animejs": "^4.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}

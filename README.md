@@ -1,27 +1,44 @@
-# 零到全栈 · 4.1 模块化成果
+# 零到全栈 · 模块 4.4
 
-依据 [zero-to-tech-4-1](https://github.com/joylibo/zero-to-tech-demos/tree/main/zero-to-tech-4-1) 的页面与样式，已完成原 README 中的五步 ES 模块化改造。
+React 双页面项目，按模块 4.4「升级我们的项目」及「把它发布到公网」完成改造。
 
-## 本地运行
+## 本地开发
 
-在本目录打开终端：
-
-```powershell
-python -m http.server 8000 --bind 127.0.0.1
+```bash
+npm install
+npm run dev
 ```
 
-浏览器访问 http://127.0.0.1:8000/，按 Ctrl+C 停止服务。ES 模块需要 HTTP 服务，请勿直接双击 HTML。anime.js 从 jsDelivr CDN 加载，需要联网。
+访问终端显示的本地地址。个人主页路径为 `/`，文字实验室为 `/text-lab`。
 
-## 文件结构
+## 本章功能
 
-- `index.html`：个人主页。
-- `text-lab.html`：文字实验室。
-- `css/`：参考项目的八个样式文件。
-- `js/main.js`：统一入口，初始化导航、卡片动画和分数动画。
-- `js/nav.js`：导出 `initNav`，高亮当前页面导航。
-- `js/cards.js`：导出 `initCardsAnim`，使用 anime.js 的 `animate` 和 `stagger`。
-- `js/score.js`：导出 `initScoreAnim`，点击按钮播放 `scrambleText` 数字动画。
+- `src/data/site.js` 集中管理主页和文字实验室的文案。
+- 输入框使用 React state，实时显示「已输入 N 字」。
+- `src/router/useRoute.js` 同步地址栏、页面导航和浏览器前进后退。
+- 结果卡暂时显示固定内容；真实分析将在后端接口章节接入。
 
-两个页面均只加载 `<script type="module" src="js/main.js"></script>`。anime.js 通过 ES 模块导入，不再依赖全局 `anime` 或传统脚本的加载顺序。
+`src/main.jsx` 是统一入口，`App.jsx` 选择页面，页面组合 `src/components/` 中的组件；样式由入口导入 `src/css/`。
+旧的根目录 `css/`、`js/`、`text-lab.html` 和 `src/result.jsx` 保留为前面课程的参考，新版使用 `/` 和 `/text-lab`。
 
-文字实验室沿用课程示例的固定文本、拼音和情感分数；按钮演示分数动画，尚未接入真实文本分析服务。
+## 提交与部署
+
+只提交源码和锁文件，`node_modules/`、`dist/` 已加入 `.gitignore`。
+本地提交并 push 后，在服务器执行：
+
+```bash
+cd /root/1154
+git pull --ff-only
+npm install
+npm run build
+```
+
+服务器使用 Node.js 24，通过 nvm 安装；新 shell 中可执行 `. "$HOME/.nvm/nvm.sh"` 加载 nvm。
+
+Nginx 的 `root` 指向 `/root/1154/dist`，并在 `location /` 中设置：
+
+```nginx
+try_files $uri $uri/ /index.html;
+```
+
+这样直接访问或刷新 `/text-lab` 也会交给 React 路由。修改 Nginx 配置后执行 `nginx -t` 和 `systemctl reload nginx`。
