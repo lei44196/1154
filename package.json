@@ -1,13 +1,14 @@
 {
   "name": "quanzhan",
   "version": "1.0.0",
+  "type": "module",
   "description": "零到全栈模块 4.4：React 组件、集中管理文案、输入状态和 URL 路由。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview" 
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
