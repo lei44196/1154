@@ -1,3 +1,5 @@
 111.txt
 node_modules/
 dist/
+.next/
+out/

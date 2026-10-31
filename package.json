@@ -2,30 +2,26 @@
   "name": "quanzhan",
   "version": "1.0.0",
   "type": "module",
-  "description": "零到全栈模块 4.4：React 组件、集中管理文案、输入状态和 URL 路由。",
-  "main": "index.js",
+  "description": "零到全栈模块 4.5：Next.js 文件夹路由与页面预渲染。",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lei44196/------.git"
+    "url": "git+https://github.com/lei44196/1154.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lei44196/------/issues"
+    "url": "https://github.com/lei44196/1154/issues"
   },
-  "homepage": "https://github.com/lei44196/------#readme",
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.2",
-    "vite": "^8.3.5"
-  },
+  "homepage": "https://github.com/lei44196/1154#readme",
   "dependencies": {
     "animejs": "^4.5.0",
+    "next": "^15.5.28",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   }

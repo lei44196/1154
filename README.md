@@ -1,44 +1,35 @@
-# 零到全栈 · 模块 4.4
+# 零到全栈 · 模块 4.5
 
-React 双页面项目，按模块 4.4「升级我们的项目」及「把它发布到公网」完成改造。
+本项目由 4.4 的 Vite + React 迁移到 Next.js 15，保留自定义文案、卡片布局、动画和输入计数。
 
-## 本地开发
+## 本地运行
 
 ```bash
 npm install
 npm run dev
 ```
 
-访问终端显示的本地地址。个人主页路径为 `/`，文字实验室为 `/text-lab`。
+打开 `http://localhost:3000`，文字实验室路径为 `/text-lab`。
 
-## 本章功能
+## 项目结构
 
-- `src/data/site.js` 集中管理主页和文字实验室的文案。
-- 输入框使用 React state，实时显示「已输入 N 字」。
-- `src/router/useRoute.js` 同步地址栏、页面导航和浏览器前进后退。
-- 结果卡暂时显示固定内容；真实分析将在后端接口章节接入。
+- `app/layout.jsx`：全站 HTML 外壳和 CSS 入口。
+- `app/page.jsx`：主页路由。
+- `app/text-lab/page.jsx`：文字实验室路由。
+- `components/`：导航、页面、卡片和动画组件。
+- `data/site.js`：集中管理网站文案。
+- `css/`：沿用前面课程的样式。
 
-`src/main.jsx` 是统一入口，`App.jsx` 选择页面，页面组合 `src/components/` 中的组件；样式由入口导入 `src/css/`。
-旧的根目录 `css/`、`js/`、`text-lab.html` 和 `src/result.jsx` 保留为前面课程的参考，新版使用 `/` 和 `/text-lab`。
+Next.js 的文件夹路由接替旧的 `App.jsx` 和 `useRoute.js`，导航使用 Next 的 `Link`。
+交互组件标记 `"use client"`，纯展示组件保持默认服务端组件。
+构建并行度限制为 1，以适应现有约 2 GB 内存的服务器。
 
-## 提交与部署
-
-只提交源码和锁文件，`node_modules/`、`dist/` 已加入 `.gitignore`。
-本地提交并 push 后，在服务器执行：
+## 4.5 构建
 
 ```bash
-cd /root/1154
-git pull --ff-only
-npm install
 npm run build
+npm run start
 ```
 
-服务器使用 Node.js 24，通过 nvm 安装；新 shell 中可执行 `. "$HOME/.nvm/nvm.sh"` 加载 nvm。
-
-Nginx 的 `root` 指向 `/root/1154/dist`，并在 `location /` 中设置：
-
-```nginx
-try_files $uri $uri/ /index.html;
-```
-
-这样直接访问或刷新 `/text-lab` 也会交给 React 路由。修改 Nginx 配置后执行 `nginx -t` 和 `systemctl reload nginx`。
+`.next/server/app/` 中能看到预渲染的 HTML，但 `.next/` 不是可直接交给 Nginx 的静态网站根目录。
+下一节 4.6 会启用静态导出，生成 `out/` 后通过 Nginx 发布。
