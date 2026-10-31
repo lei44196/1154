@@ -2,7 +2,7 @@
   "name": "quanzhan",
   "version": "1.0.0",
   "type": "module",
-  "description": "零到全栈模块 4.5：Next.js 文件夹路由与页面预渲染。",
+  "description": "零到全栈模块 4.5/4.6：Next.js 文件夹路由、预渲染与静态导出部署。",
   "private": true,
   "scripts": {
     "dev": "next dev",
