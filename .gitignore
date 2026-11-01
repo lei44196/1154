@@ -6,3 +6,13 @@ out/
 .venv/
 __pycache__/
 *.py[cod]
+.env*
+!.env.example
+/backend/*.log
+/backend/*.pid
+/backend/history.json
+/backend/*.db
+/backend/*.db-journal
+/backend/*.db-wal
+/backend/*.db-shm
+/backend/backups/

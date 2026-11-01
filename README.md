@@ -2,7 +2,7 @@
 
 项目已迁移到 Next.js 15，使用文件夹路由、页面预渲染和静态导出，通过 Nginx 发布。自定义文案、原有布局、动画和输入计数均保留。
 
-模块 5.4 的后端位于 `backend/`，实现 `GET /api/profile`、`POST /api/analyze` 和自动文档。安装、运行和验证方法见 [backend/README.md](backend/README.md)。
+后端位于 `backend/`，实现主页数据、真实拼音与情感分析、自动文档与 SQLite 存档。模块 6.6 已加入 Cookie 会话和前端历史弹窗：每个浏览器只查看自己的记录，重启后数据仍在。安装、运行和验证方法见 [backend/README.md](backend/README.md)。
 
 ## 本地开发
 
@@ -66,4 +66,4 @@ location / {
 `/text-lab` 会找到真实的 `out/text-lab.html`，不需要回退到首页。不存在的页面返回 404。
 修改配置后执行 `nginx -t` 和 `systemctl reload nginx`。
 
-“开始分析”仍显示课程占位内容，实际分析功能将在后端接口章节接入。
+文字实验室已通过模块 5.5 的请求与状态更新显示后端结果。模块 6.2 的真实分析仅替换后端实现，接口约定不变。
