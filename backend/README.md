@@ -1,4 +1,4 @@
-# 模块 7.1 · 配置与全栈部署
+# 模块 7.2 · systemd 与同源部署
 
 `main.py` 定义 API 和分析业务，`storage.py` 负责 SQLite 读写，uvicorn 负责监听端口和运行应用。
 `fastapi dev` 是开发用快捷命令，会启动 uvicorn 并开启代码修改后自动重载。
@@ -41,6 +41,11 @@ python3 -m venv .venv
 ```
 
 这是本地开发运行方式。公网发布和后台运行见项目根目录 README 的部署流程。
+
+线上由 `zero-backend.service` 管理，只监听 `127.0.0.1:8000`。
+公网通过 Nginx 的 `/api/` 访问后端；日志使用 `journalctl -u zero-backend -n 50`，
+重启使用 `systemctl restart zero-backend`。不再使用 nohup 或手动维护 PID 文件。
+前端线上 `.env.production` 设置 `NEXT_PUBLIC_API_BASE_URL=`，本地 `.env.local` 仍使用 localhost。
 
 ## 环境配置
 
