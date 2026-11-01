@@ -1,0 +1,19 @@
+[Unit]
+Description=zero-to-tech backend
+After=network.target
+
+[Service]
+Type=simple
+User=zero-backend
+Group=zero-backend
+WorkingDirectory=/root/1154/backend
+ExecStart=/root/1154/backend/.venv/bin/fastapi run main.py --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+Environment=PYTHONUTF8=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=true
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
